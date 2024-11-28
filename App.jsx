@@ -16,36 +16,59 @@ import PUT_API from './src/components/PUT_API';
 import PATCH_API from './src/components/PATCH_API';
 import DELETE_API from './src/components/DELETE_API';
 import PlatformExample from './src/components/PlatformExample';
+import GET_API_LIST from './src/components/GET_API_LIST';
+import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import Home from './src/components/navigation/Home';
+import About from './src/components/navigation/About';
+
+// const App = () => {
+//   return (
+//     <>
+//       <View style={{flex: 1}}>
+//         {/* <Text>hello</Text>
+//       <Text>Wolrd </Text>
+//       <TextInput
+//         placeholder="email"
+//         style={{backgroundColor: '#000', color: '#fff'}}
+//         placeholderTextColor="#fff"
+//       /> */}
+//         {/* <List /> */}
+//         {/* <LoginForm /> */}
+//         {/* <ContactListScreen /> flatlist ma component kesy pass krty he  */}
+//         {/* <Grid /> */}
+//         {/* <StylewithButton /> */}
+//         {/* <Loader /> */}
+//         {/* <PressableComponent /> */}
+//         {/* <SatusBarExample /> */}
+//         {/* <ModalDialogBox />
+//         <AlertExample/> */}
+//         {/* <GET_API />
+//         <POST_API />
+//         <PUT_API />
+//         <PATCH_API /> */}
+//         {/* <DELETE_API /> */}
+//         {/* <GET_API_LIST/> */}
+//         <PlatformExample />
+//       </View>
+//     </>
+//   );
+// };
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
-    <>
-      <View style={{flex: 1}}>
-        {/* <Text>hello</Text>
-      <Text>Wolrd </Text>
-      <TextInput
-        placeholder="email"
-        style={{backgroundColor: '#000', color: '#fff'}}
-        placeholderTextColor="#fff"
-      /> */}
-        {/* <List /> */}
-        {/* <LoginForm /> */}
-        {/* <ContactListScreen /> flatlist ma component kesy pass krty he  */}
-        {/* <Grid /> */}
-        {/* <StylewithButton /> */}
-        {/* <Loader /> */}
-        {/* <PressableComponent /> */}
-        {/* <SatusBarExample /> */}
-        {/* <ModalDialogBox />
-        <AlertExample/> */}
-        {/* <GET_API />
-        <POST_API />
-        <PUT_API />
-        <PATCH_API /> */}
-        <DELETE_API />
-        <PlatformExample />
-      </View>
-    </>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{headerShown: false}}
+        />
+        <Stack.Screen name="About" component={About} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
