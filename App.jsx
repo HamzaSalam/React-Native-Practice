@@ -1,4 +1,11 @@
-import {View, Text, TextInput, StatusBar, Button} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StatusBar,
+  Button,
+  StyleSheet,
+} from 'react-native';
 import React from 'react';
 import List from './src/components/List';
 import LoginForm from './src/components/LoginForm';
@@ -24,39 +31,44 @@ import About from './src/components/navigation/About';
 import {createDrawerNavigator} from '@react-navigation/drawer';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/Ionicons';
+import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
+import AsyncStorageExample from './src/components/AsyncStorageExample';
+import ImageComponentExample from './src/components/ImageComponentExample';
 
-// const App = () => {
-//   return (
-//     <>
-//       <View style={{flex: 1}}>
-//         {/* <Text>hello</Text>
-//       <Text>Wolrd </Text>
-//       <TextInput
-//         placeholder="email"
-//         style={{backgroundColor: '#000', color: '#fff'}}
-//         placeholderTextColor="#fff"
-//       /> */}
-//         {/* <List /> */}
-//         {/* <LoginForm /> */}
-//         {/* <ContactListScreen /> flatlist ma component kesy pass krty he  */}
-//         {/* <Grid /> */}
-//         {/* <StylewithButton /> */}
-//         {/* <Loader /> */}
-//         {/* <PressableComponent /> */}
-//         {/* <SatusBarExample /> */}
-//         {/* <ModalDialogBox />
-//         <AlertExample/> */}
-//         {/* <GET_API />
-//         <POST_API />
-//         <PUT_API />
-//         <PATCH_API /> */}
-//         {/* <DELETE_API /> */}
-//         {/* <GET_API_LIST/> */}
-//         <PlatformExample />
-//       </View>
-//     </>
-//   );
-// };
+const App = () => {
+  return (
+    <>
+      <View style={{flex: 1}}>
+        {/* <Text>hello</Text>
+      <Text>Wolrd </Text>
+      <TextInput
+        placeholder="email"
+        style={{backgroundColor: '#000', color: '#fff'}}
+        placeholderTextColor="#fff"
+      /> */}
+        {/* <List /> */}
+        {/* <LoginForm /> */}
+        {/* <ContactListScreen /> flatlist ma component kesy pass krty he  */}
+        {/* <Grid /> */}
+        {/* <StylewithButton /> */}
+        {/* <Loader /> */}
+        {/* <PressableComponent /> */}
+        {/* <SatusBarExample /> */}
+        {/* <ModalDialogBox />
+        <AlertExample/> */}
+        {/* <GET_API />
+        <POST_API />
+        <PUT_API />
+        <PATCH_API /> */}
+        {/* <DELETE_API /> */}
+        {/* <GET_API_LIST/> */}
+        {/* <PlatformExample /> */}
+        {/* <AsyncStorageExample /> */}
+        <ImageComponentExample />
+      </View>
+    </>
+  );
+};
 
 // open activity to activity
 
@@ -114,58 +126,110 @@ import Icon from 'react-native-vector-icons/Ionicons';
 
 // const Tab = createBottomTabNavigator();
 
-const HomeScreen = () => {
-  <View>
-    <Text>Home Screen</Text>
-    <Button title="button" />
-  </View>;
-};
+// const HomeScreen = () => {
+//   <View>
+//     <Text>Home Screen</Text>
+//     <Button title="button" />
+//   </View>;
+// };
 
-const ProfileScreen = () => {
-  <View>
-    <Text>Home Screen</Text>
-  </View>;
-};
+// const ProfileScreen = () => {
+//   <View>
+//     <Text>Home Screen</Text>
+//   </View>;
+// };
 
-const SettingScreen = () => {
-  <View>
-    <Text style={{color: '#000'}}>Home Screen</Text>
-  </View>;
-};
+// const SettingScreen = () => {
+//   <View>
+//     <Text style={{color: '#000'}}>Home Screen</Text>
+//   </View>;
+// };
 
-const MyTabs = createBottomTabNavigator();
+// const MyTabs = createBottomTabNavigator();
 
-const getTabBarIcon = (routeName, focused, color, size) => {
-  let iconName;
-  if (routeName === 'Home') {
-    iconName = focused ? 'home' : 'home-outline';
-  } else if (routeName === 'Profile') {
-    iconName = focused ? 'person' : 'person-outline';
-  }
+// const getTabBarIcon = (routeName, focused, color, size) => {
+//   let iconName;
+//   if (routeName === 'Home') {
+//     iconName = focused ? 'home' : 'home-outline';
+//   } else if (routeName === 'Profile') {
+//     iconName = focused ? 'person' : 'person-outline';
+//   }
 
-  return <Icon name={iconName} size={size} color={color} />;
-};
+//   return <Icon name={iconName} size={size} color={color} />;
+// };
 
-const App = () => {
-  return (
-    <NavigationContainer>
-      <MyTabs.Navigator
-        screenOptions={({route}) => ({
-          tabBarIcon: ({focused, color, size}) =>
-            getTabBarIcon(route.name, focused, color, size),
-          tabBarActiveTintColor: '#007bff',
-          tabBarInactiveTintColor: 'gray',
-          tabBarStyle: {
-            paddingBottom: 5,
-            height: 60,
-          },
-        })}>
-        <MyTabs.Screen name="Home" component={HomeScreen} />
-        <MyTabs.Screen name="Profile" component={ProfileScreen} />
-        <MyTabs.Screen name="Setting" component={SettingScreen} />
-      </MyTabs.Navigator>
-    </NavigationContainer>
-  );
-};
+// const App = () => {
+//   return (
+//     <NavigationContainer>
+//       <MyTabs.Navigator
+//         screenOptions={({route}) => ({
+//           tabBarIcon: ({focused, color, size}) =>
+//             getTabBarIcon(route.name, focused, color, size),
+//           tabBarActiveTintColor: '#007bff',
+//           tabBarInactiveTintColor: 'gray',
+//           tabBarStyle: {
+//             paddingBottom: 5,
+//             height: 60,
+//           },
+//         })}>
+//         <MyTabs.Screen name="Home" component={HomeScreen} />
+//         <MyTabs.Screen name="Profile" component={ProfileScreen} />
+//         <MyTabs.Screen name="Setting" component={SettingScreen} />
+//       </MyTabs.Navigator>
+//     </NavigationContainer>
+//   );
+// };
+
+// const MyTab = createMaterialTopTabNavigator();
+
+// const Chats = () => {
+//   <View style={style.contianer}>
+//     <Text style={style.text}>Home Screen</Text>
+//     <Button title="button" />
+//   </View>;
+// };
+
+// const Status = () => {
+//   <View style={style.contianer}>
+//     <Text style={style.text}>Screen</Text>
+//   </View>;
+// };
+
+// const Calls = () => {
+//   <View style={style.contianer}>
+//     <Text style={style.text}>Home Screen</Text>
+//   </View>;
+// };
+
+// const App = () => {
+//   return (
+//     <NavigationContainer>
+//       <MyTab.Navigator
+//         screenOptions={{
+//           tabBarActiveTintColor: '#007bff',
+//           tabBarInactiveTintColor: 'gray',
+//           tabBarStyle: {backgroundColor: '#fff'},
+//           tabBarIndicatorStyle: {backgroundColor: '#007bff', height: 3},
+//           tabBarLabelStyle: {fontSize: 16},
+//         }}>
+//         <MyTab.Screen name="Chats" component={Home} />
+//         <MyTab.Screen name="Status" component={Status} />
+//         <MyTab.Screen name="Calls" component={Calls} />
+//       </MyTab.Navigator>
+//     </NavigationContainer>
+//   );
+// };
+
+// const style = StyleSheet.create({
+//   contianer: {
+//     flex: 1,
+//     justifyContent: 'center',
+//     alignItems: 'center',
+//     backgroundColor: '#f0f',
+//   },
+//   text: {
+//     fontSize: 20,
+//   },
+// });
 
 export default App;
