@@ -1,4 +1,4 @@
-import {View, Text, TextInput, StatusBar} from 'react-native';
+import {View, Text, TextInput, StatusBar, Button} from 'react-native';
 import React from 'react';
 import List from './src/components/List';
 import LoginForm from './src/components/LoginForm';
@@ -21,6 +21,9 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Home from './src/components/navigation/Home';
 import About from './src/components/navigation/About';
+import {createDrawerNavigator} from '@react-navigation/drawer';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import Icon from 'react-native-vector-icons/Ionicons';
 
 // const App = () => {
 //   return (
@@ -55,19 +58,112 @@ import About from './src/components/navigation/About';
 //   );
 // };
 
-const Stack = createNativeStackNavigator();
+// open activity to activity
+
+// const Stack = createNativeStackNavigator();
+
+// const App = () => {
+//   return (
+//     <NavigationContainer>
+//       <Stack.Navigator>
+//         <Stack.Screen
+//           name="Home"
+//           component={Home}
+//           options={{headerShown: false}}
+//         />
+//         <Stack.Screen
+//           name="About"
+//           component={About}
+//           options={{headerShown: false}}
+//         />
+//       </Stack.Navigator>
+//     </NavigationContainer>
+//   );
+// };
+
+// DrawerLayout
+
+// const App = () => {
+//   const Drawer = createDrawerNavigator();
+//   return (
+//     <View>
+//       <Text>App</Text>
+//     </View>
+//     // <NavigationContainer>
+//     //   <Drawer.Navigator
+//     //     screenOptions={{
+//     //       drawerStyle: {backgroundColor: '#e6e6e6', width: 240},
+//     //       drawerLabelStyle: {
+//     //         fontSize: 18,
+//     //         color: '#333',
+//     //       },
+//     //       headerStyle: {
+//     //         backgroundColor: '#6200EE',
+//     //       },
+//     //       headerTintColor: '#fff',
+//     //       headerTitleAlign: 'center',
+//     //     }}>
+//     //     <Drawer.Screen name="Home" component={Home} />
+//     //     <Drawer.Screen name="About" component={About} />
+//     //   </Drawer.Navigator>
+//     // </NavigationContainer>
+//   );
+// };
+
+// Bottom bar navigation
+
+// const Tab = createBottomTabNavigator();
+
+const HomeScreen = () => {
+  <View>
+    <Text>Home Screen</Text>
+    <Button title="button" />
+  </View>;
+};
+
+const ProfileScreen = () => {
+  <View>
+    <Text>Home Screen</Text>
+  </View>;
+};
+
+const SettingScreen = () => {
+  <View>
+    <Text style={{color: '#000'}}>Home Screen</Text>
+  </View>;
+};
+
+const MyTabs = createBottomTabNavigator();
+
+const getTabBarIcon = (routeName, focused, color, size) => {
+  let iconName;
+  if (routeName === 'Home') {
+    iconName = focused ? 'home' : 'home-outline';
+  } else if (routeName === 'Profile') {
+    iconName = focused ? 'person' : 'person-outline';
+  }
+
+  return <Icon name={iconName} size={size} color={color} />;
+};
 
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen name="About" component={About} />
-      </Stack.Navigator>
+      <MyTabs.Navigator
+        screenOptions={({route}) => ({
+          tabBarIcon: ({focused, color, size}) =>
+            getTabBarIcon(route.name, focused, color, size),
+          tabBarActiveTintColor: '#007bff',
+          tabBarInactiveTintColor: 'gray',
+          tabBarStyle: {
+            paddingBottom: 5,
+            height: 60,
+          },
+        })}>
+        <MyTabs.Screen name="Home" component={HomeScreen} />
+        <MyTabs.Screen name="Profile" component={ProfileScreen} />
+        <MyTabs.Screen name="Setting" component={SettingScreen} />
+      </MyTabs.Navigator>
     </NavigationContainer>
   );
 };

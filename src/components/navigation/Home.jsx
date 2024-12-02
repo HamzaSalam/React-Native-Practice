@@ -12,6 +12,12 @@ const Home = ({navigation}) => {
           navigation.navigate('About');
         }}
       />
+      {/* <Button
+        title="open drawer"
+        onPress={() => {
+          navigation.openDrawer();
+        }}
+      /> */}
     </View>
   );
 };
