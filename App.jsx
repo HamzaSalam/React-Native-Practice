@@ -34,6 +34,9 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import AsyncStorageExample from './src/components/AsyncStorageExample';
 import ImageComponentExample from './src/components/ImageComponentExample';
+import Parent from './src/components/context/Parent';
+import FirstChild from './src/components/context/FirstChild';
+import Subchild from './src/components/context/SubChild';
 
 const App = () => {
   return (
@@ -64,7 +67,8 @@ const App = () => {
         {/* <GET_API_LIST/> */}
         {/* <PlatformExample /> */}
         {/* <AsyncStorageExample /> */}
-        <ImageComponentExample />
+        {/* <ImageComponentExample /> */}
+        <Parent />
       </View>
     </>
   );
